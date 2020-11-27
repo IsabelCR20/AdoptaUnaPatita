@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="img/logo-pata.png"/>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">    
+    <link rel="stylesheet" href="css/bootstrapValidator.min.css">
+    <link rel="stylesheet" href="fontawesome/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/estilos-contactanos.css">
+    <link rel="stylesheet" href="css/estilos-pie.css">
+    <title>Contáctanos</title>
+</head>
+<body>
+    <!-- Menu -->
+    <iframe id="frame-menu" scrolling="no" seamless src="menu.html" frameborder="0"></iframe>
+    <!-- Tarjeta de contácto -->
+    <div class="card border-green mb-5 mx-auto mt-4" style="width: 35%;">
+        <div class="card-header text-white bg-green mb-1 text-center">
+          <h4>Comunícate con nosotros</h4>
+        </div>
+        <div class="card-body text-info">
+          <form id="frmContacto">
+            <div class="form-group mb-3">
+                <input type="text" name="txtNombre" class="form-control" placeholder="Nombre*" required>               
+            </div>
+            <div class="form-group">
+                <input type="text" name="txtTelefono" class="form-control" placeholder="Número de teléfono (opcional)">              
+            </div>            
+            <div class="form-group">
+                <input type="email" name="txtEmail" class="form-control" placeholder="Correo electrónico*" required>                
+            </div>
+            <div class="form-group">
+                <textarea name="txtMensaje" class="form-control" rows="3" placeholder="¿En qué podemos ayudarte?*" required></textarea>                              
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-outline-success">Enviar</button>
+            </div>               
+          </form>
+        </div>
+    </div>
+
+    <!-- Pie de pagina -->
+    <footer class="border-top">
+      <div class="columna">
+        <img src="img/logo-pata.png" alt="">
+      </div>
+       <div class="columna">
+         <h3>Contacto</h3>
+         <p><i class="fas fa-map-marker-alt"></i>Misión de San Pedro # 235, Colonia las misiones, Uriangato Gto.</p>
+         <p><i class="fas fa-phone-square-alt"></i>4451326752</p>
+         <p><i class="fas fa-envelope"></i>adoptaunapatita@gmail.com</p>
+       </div>
+       <div class="columna">
+         <h3>Redes sociales</h3>
+         <a href="#"><i class="fab fa-facebook"></i></a>
+         <a href="#"><i class="fab fa-twitter"></i></a>
+         <a href="#"><i class="fab fa-instagram"></i></a>
+         <a href="#"><i class="fab fa-youtube"></i></a>
+       </div>
+       
+     </footer>
+
+    
+    <script src="script/jquery-3.5.1.js"></script>
+    <script src="script/iframe-menu.js"></script>    
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="script/bootstrapValidator.js"></script>
+    <script src="script/contactanos.js"></script>
+</body>
+</html>

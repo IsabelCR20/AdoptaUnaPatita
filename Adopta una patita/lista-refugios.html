@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="img/logo-pata.png"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="fontawesome/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/estilos-refugios.css">
+    <link rel="stylesheet" href="css/estilos-pie.css">
+    <title>¡Búsqueda por refugios!</title>
+</head>
+<body>
+    <!-- Menu -->
+    <iframe id="frame-menu" src="menu.html" frameborder="0" scrolling="no" seamless></iframe>
+    <!-- Contenido -->
+    <h1>¡Encuentra a tu refugio más cercano!</h1>
+    <div id="contenido col-sm-12">
+        <!-- Filtro  -->
+        <div id="cont-izq" class="col-sm-3">
+            <div class="card">
+                <div class="card-header estilo-titulo">
+                    Filtro de búsqueda
+                </div>
+                <div class="card-body estilo-tarjeta">
+                    <form action="" id="frmFiltroRefugios">
+                        <div class="form-group">
+                            <label for="cbEstado">Estado: </label>
+                            <select id="cbEstado" class="form-control col-sm-11">
+                                <option value="default">Cualquiera</option>
+                                <option>Guanajuato</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="cbCiudad">Ciudad: </label>
+                            <select id="cbCiudad" class="form-control col-sm-11">
+                                <option>Cualquiera</option>
+                                <option>Moroleón</option>
+                                <option>Uriangato</option>
+                                <option>Yuriria</option>
+                                <option>León</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtNombre">Nombre del refugio: </label>
+                            <input type="text" name="txtNombre" id="txtNombre" class="form-control col-sm-11">
+                        </div>
+                    </form>
+                  <button id="btnFiltro"> Buscar </button>
+                </div>
+              </div>
+        </div>
+        <!-- Perfiles -->
+        <div id="cont-der" class="col-sm-8">
+            <div class="card-deck">
+                <div class="card tarjeta-perfil col-sm-4">
+                  <img src="img/logo-refugio1.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">Refugio Animal Alfa A.C.</h5>
+                    <p class="estilo-caracteristica">Estado: </p>
+                    <p class="estilo-res">Guanajuato</p><br>
+                    <p class="estilo-caracteristica">Ciudad: </p>
+                    <p class="estilo-res">Uriangato</p>
+                    <p class="estilo-caracteristica">Teléfono: </p>
+                    <p class="estilo-res">445 121 8181</p>
+                    <button class="btnVerMas"> Más información </button>
+                  </div>
+                </div>
+                <div class="card tarjeta-perfil col-sm-4">
+                    <img src="img/logo-refugio-default.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Fundación Animare León</h5>
+                      <p class="estilo-caracteristica">Estado: </p>
+                      <p class="estilo-res">Guanajuato</p><br>
+                      <p class="estilo-caracteristica">Ciudad: </p>
+                      <p class="estilo-res">León</p>
+                      <p class="estilo-caracteristica">Teléfono: </p>
+                      <p class="estilo-res">477 636 9880</p>
+                      <button class="btnVerMas"> Más información </button>
+                    </div>
+                  </div>
+                  <div class="card tarjeta-perfil col-sm-4">
+                    <img src="img/logo-refugio-default.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Centro de Proteccion Animal</h5>
+                      <p class="estilo-caracteristica">Estado: </p>
+                      <p class="estilo-res">Guanajuato</p><br>
+                      <p class="estilo-caracteristica">Ciudad: </p>
+                      <p class="estilo-res">Celaya</p><br>
+                      <p class="estilo-caracteristica">Teléfono: </p>
+                      <p class="estilo-res">461 612 6477</p>
+                      <button class="btnVerMas"> Más información </button>
+                    </div>
+                  </div>
+                  <div class="card tarjeta-perfil col-sm-4">
+                    <img src="img/logo-refugio2.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Centro de Atencion Animal</h5>
+                      <p class="estilo-caracteristica">Estado: </p>
+                      <p class="estilo-res">Michoacan</p><br>
+                      <p class="estilo-caracteristica">Ciudad: </p>
+                      <p class="estilo-res">Morelia</p>
+                      <p class="estilo-caracteristica">Teléfono: </p>
+                      <p class="estilo-res">443 321 4731</p>
+                      <button class="btnVerMas"> Más información </button>
+                    </div>
+                  </div>
+              </div>
+        </div>
+    </div>
+     <!-- Pie de pagina -->
+     <footer class="border-top">
+        <div class="columna">
+          <img src="img/logo-pata.png" alt="">
+        </div>
+         <div class="columna">
+           <h3>Contacto</h3>
+           <p><i class="fas fa-map-marker-alt"></i>Misión de San Pedro # 235, Colonia las misiones, Uriangato Gto.</p>
+           <p><i class="fas fa-phone-square-alt"></i>4451326752</p>
+           <p><i class="fas fa-envelope"></i>adoptaunapatita@gmail.com</p>
+         </div>
+         <div class="columna">
+           <h3>Redes sociales</h3>
+           <a href="#"><i class="fab fa-facebook"></i></a>
+           <a href="#"><i class="fab fa-twitter"></i></a>
+           <a href="#"><i class="fab fa-instagram"></i></a>
+           <a href="#"><i class="fab fa-youtube"></i></a>
+         </div>
+         
+       </footer>
+       <!-- JavaScript -->
+       <script src="script/iframe-menu.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+#frame-menu{
+    width: 100%;
+    height: 77px;
+    margin: 0;
+    padding: 0;
+}
+.w-form-adopcion{
+    max-width: 40rem;
+    padding: 2rem
+}
+h1{
+    color: #6AA037;
+}
+.nombre{
+    color: #BD3898;
+}
+.btn{
+    border-color: #6AA037 ;
+    color:#6AA037;
+}
+.formulario button:hover, .bg-green{
+    background-color: #6AA037;
+    border-color: #6AA037 ;
+}
+.letra-blanca{
+    color: white;
+}
