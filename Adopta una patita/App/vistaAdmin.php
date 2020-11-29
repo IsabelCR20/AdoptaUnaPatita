@@ -34,7 +34,7 @@
         </div>
     </nav>     
     <?php
-        session_start();
+        //session_start(); //No sé si esto va aquí
         if(isset($_POST['clave'])){
             if($dao->eliminar($_POST['clave'])){
                 $_SESSION["msg"]="Mascota dada de baja correctamente";
@@ -71,7 +71,7 @@
         </div>
         <h1>Lista de mascotas</h1>
         <?php
-            session_start();
+            //session_start(); //No sé si esto va aquí
             if(isset($_SESSION["msg"])){                
         ?>
             <div class="alert alert-<?= isset($_SESSION["tipoMsg"]) && $_SESSION["tipoMsg"]==0? "danger":"success"  ?> alert-dismissible fade show" role="alert">
