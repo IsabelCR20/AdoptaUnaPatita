@@ -9,11 +9,11 @@
         public $Sitio_web;
 
         public function __construct(
-            $Id_Refugio
-            $Nombre
-            $Direccion
-            $Telefono
-            $Email
+            $Id_Refugio,
+            $Nombre,
+            $Direccion,
+            $Telefono,
+            $Email,
             $Sitio_web
         ){
             $this->Id_Refugio = $Id_Refugio;

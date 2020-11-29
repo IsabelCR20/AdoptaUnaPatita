@@ -50,86 +50,85 @@
             }finally{
                 Conexion::cerrarConexion();
             }
+        }    
+
+        public function obtenerUno($id){
+            try {
+                $this->conectar();
+                $registro = null;
+
+                $sentenciaSQL = "SELECT * FROM MASCOTAS WHERE ID_MASCOTA = ?;";
+                $sentenciaSQL->execute([$id]);
+
+                $fila=$sentenciaSQL->fetch(PDO::FETCH_OBJ);
+                $registro = new Mascota(
+                    $fila->ID_MASCOTA,
+                    $fila->NOMBRE,
+                    $fila->RAZA,
+                    $fila->COLOR,
+                    $fila->SEXO,
+                    $fila->EDAD,
+                    $fila->PESO,
+                    $fila->TAMANIO,
+                    $fila->ESTERILIZADO,
+                    $fila->DESCRIPCION,
+                    $fila->HISTORIA,
+                    $fila->IMGAGEN1,
+                    $fila->IMGAGEN2,
+                    $fila->IMGAGEN3,
+                    $fila->ID_REFUGIO
+                );
+                return $registro;
+            } catch(Exception $e){
+                echo $e->getMessage();
+                return null;
+            }finally{
+                Conexion::cerrarConexion();
+            }
         }
-    }
 
-    public function obtenerUno($id){
-        try {
-            $this->conectar();
-            $registro = null;
-
-            $sentenciaSQL = "SELECT * FROM MASCOTAS WHERE ID_MASCOTA = ?;";
-            $sentenciaSQL->execute([$id]);
-
-            $fila=$sentenciaSQL->fetch(PDO::FETCH_OBJ);
-            $registro = new Mascota(
-                $fila->ID_MASCOTA,
-                $fila->NOMBRE,
-                $fila->RAZA,
-                $fila->COLOR,
-                $fila->SEXO,
-                $fila->EDAD,
-                $fila->PESO,
-                $fila->TAMANIO,
-                $fila->ESTERILIZADO,
-                $fila->DESCRIPCION,
-                $fila->HISTORIA,
-                $fila->IMGAGEN1,
-                $fila->IMGAGEN2,
-                $fila->IMGAGEN3,
-                $fila->ID_REFUGIO
-            );
-            return $registro;
-        } catch(Exception $e){
-            echo $e->getMessage();
-            return null;
-		}finally{
-            Conexion::cerrarConexion();
+        public function eliminar($id){
+            try 
+            {
+                $this->conectar();
+                $sentenciaSQL = $this->conexion->prepare("DELETE FROM MASCOTAS WHERE ID_MASCOTA = ?;");			          
+                $sentenciaSQL->execute(array($id));
+                return true;
+            } catch (Exception $e) 
+            {
+                return false;
+            }finally{
+                Conexion::cerrarConexion();
+            }
         }
-    }
-
-    public function eliminar($id)
-	{
-		try 
-		{
-			$this->conectar();
-            $sentenciaSQL = $this->conexion->prepare("DELETE FROM MASCOTAS WHERE ID_MASCOTA = ?;");			          
-            $sentenciaSQL->execute(array($id));
-            return true;
-		} catch (Exception $e) 
-		{
-            return false;
-		}finally{
-            Conexion::cerrarConexion();
-        }
-    }
-    
-    public function agregar(Mascota $nuevo){
-        try {
-            $sql = "INSERT INTO MASCOTAS VALUES(NULL,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
-            $this->conectar();
-            $this->conexion->prepare($sql)->execute(array(
-                $nuevo->Nombre,
-                $nuevo->Raza,
-                $nuevo->Color,
-                $nuevo->Sexo,
-                $nuevo->Edad,
-                $nuevo->Peso,
-                $nuevo->Tamanio,
-                $nuevo->Esterilizado,
-                $nuevo->Descripcion,
-                $nuevo->Historia,
-                $nuevo->Imagen1,
-                $nuevo->Imagen2,
-                $nuevo->Imagen3,
-                $nuevo->Id_Refugio
-            ));
-            return true;
-        } catch (Exception $e){
-			echo $e->getMessage();
-			return false;
-		}finally{
-            Conexion::cerrarConexion();
+        
+        public function agregar(Mascota $nuevo){
+            try {
+                $sql = "INSERT INTO MASCOTAS VALUES(NULL,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+                $this->conectar();
+                $this->conexion->prepare($sql)->execute(array(
+                    $nuevo->Nombre,
+                    $nuevo->Raza,
+                    $nuevo->Color,
+                    $nuevo->Sexo,
+                    $nuevo->Edad,
+                    $nuevo->Peso,
+                    $nuevo->Tamanio,
+                    $nuevo->Esterilizado,
+                    $nuevo->Descripcion,
+                    $nuevo->Historia,
+                    $nuevo->Imagen1,
+                    $nuevo->Imagen2,
+                    $nuevo->Imagen3,
+                    $nuevo->Id_Refugio
+                ));
+                return true;
+            } catch (Exception $e){
+                echo $e->getMessage();
+                return false;
+            }finally{
+                Conexion::cerrarConexion();
+            }
         }
     }
 ?>

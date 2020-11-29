@@ -17,82 +17,96 @@
     <iframe id="frame-menu" scrolling="no" seamless src="menu.html" frameborder="0"></iframe>
 
     <!-- Contenido -->
+    <?php
+        require_once "../Datos/MascotaDao.php";
+        require_once "../Datos/RefugioDao.php";
+        $daoMascota=new MascotaDao();
+        $daoRefugio=new RefugioDao();
+        $mascota=null;
+        $refugio=null;
+        if(isset($_POST["claveMascota"])){ 
+            $mascota=$daoMascota->obtenerUno($_POST["claveMascota"]);
+            $refugio=$daoRefugio->obtenerUno($mascota->Id_Refugio);
+        }
+    ?>
     <div class="contenido">
         <div class="informacion mt-3">            
             <div class="infoMascota">   
                 <div class="nombreMascota mb-3"> 
-                    <h1>¡Hola, me llamo Manchas!</h1>             
+                    <h1>¡Hola, me llamo <?=isset($mascota)?$mascota->Nombre:'';?>!</h1>             
                 </div>                  
                 <div class="infoBasica">
                     <div class="imagenes mb-3">
+                        <?php
+                            if(isset($mascota)){
+                                $imagen1 = $mascota->Imagen1;  
+                                $imagen2 = $mascota->Imagen2;
+                                $imagen3 = $mascota->Imagen3;
+                            }                            
+                        ?>
                         <div class="img-principal">
-                            <img class="img-principal" src="img/Manchas_1.jpg" alt="...">
+                            <img class="img-principal" src="<?=isset($imagen1)?$imagen1:'';?>" alt="imagen1Principal">
                         </div>
                         <div class="img-miniaturas">
-                            <img class="miniatura" src="img/Manchas_1.jpg" alt="...">
-                            <img class="miniatura" src="img/Manchas_2.jpg" alt="...">
-                            <img class="miniatura" src="img/Manchas_3.jpg" alt="...">
-                            <img class="miniatura" src="img/Manchas_4.jpg" alt="...">
-                            <img class="miniatura" src="img/Manchas_5.jpg" alt="...">
-                        </div>
+                            <img class="img-principal" src="<?=isset($imagen1)?$imagen1:'';?>" alt="imagen1">
+                            <?php if(!empty($imagen2)){ ?>                                                                
+                                <img class="miniatura" src="<?=$imagen2?>" alt="imagen2">                                                                   
+                            <?php }if(!empty($imagen3)){ ?>    
+                                <img class="miniatura" src="<?=$imagen3?>" alt="imagen3"> 
+                            <?php }?>                                                                  
+                        </div>                                                      
                     </div> 
                     <div class="datosMascota">
                         <h4>Datos básicos</h4>
                         <div class="datosBasicos mb-2">
-                            <span class="dato-bold">Raza: </span><span>Pastor Ganadero Australiano</span><br>
-                            <span class="dato-bold">Color: </span><span>Blanco con café/amarillo tostado</span><br>
-                            <span class="dato-bold">Sexo: </span><span>Hembra</span><br>
-                            <span class="dato-bold">Edad: </span><span>10 años</span><br>                        
-                            <span class="dato-bold">Peso: </span><span>21 kg</span><br>
-                            <span class="dato-bold">Tamaño: </span><span>Grande</span><br>
-                            <span class="dato-bold">Esterilizado: </span><span>Sí</span><br>
-                            <span class="dato-bold">Refugio: </span><a href="">Animal Alfa</a><br>
+                            <span class="dato-bold">Raza: </span><span><?=isset($mascota)?$mascota->Raza:'';?></span><br>
+                            <span class="dato-bold">Color: </span><span><?=isset($mascota)?$mascota->Color:'';?></span><br>
+                            <span class="dato-bold">Sexo: </span><span><?=isset($mascota)?$mascota->Sexo:'';?></span><br>
+                            <span class="dato-bold">Edad: </span><span><?=isset($mascota)?$mascota->Edad:'';?></span><br>                        
+                            <span class="dato-bold">Peso: </span><span><?=isset($mascota)?$mascota->Peso:'';?></span><br>
+                            <span class="dato-bold">Tamaño: </span><span><?=isset($mascota)?$mascota->Tamanio:'';?></span><br>
+                            <span class="dato-bold">Esterilizado: </span><span><?=isset($mascota)?$mascota->Esterilizado:'';?></span><br>
+                            <span class="dato-bold">Refugio: </span><a href="<?=isset($mascota)?$refugio->Sitio_web:'';?>"><?=isset($mascota)?$refugio->Nombre:'';?></a><br>
                         </div>  
                         <hr>
                         <h4>Un poco sobre mi</h4>
                         <div class="datosExtra">                            
-                            <p>Soy buena con los niños y con otros perros, pero no me llevo muy bien con los gatos.</p>
-                            <p>Me gusta jugar con una pelota y salir a caminar de vez en cuando.</p>
+                            <p><?=isset($mascota)?$mascota->Descripcion:'';?></p>                          
                         </div>              
                     </div>  
                 </div>  
                 <hr>
                 <div class="historiaMascota">
                     <h4>Mi historia</h4>
-                    <p>
-                        Soy una perrita increíble, súper inteligente y con mucho amor para dar. 
-                        En el refugio me tienen bien entrenada, obedezco los comandos de las personas: dar la pata, sentarme, dar vueltas y bajarme de la cama o de los sillones.
-                        Necesito un dueño amoroso y que juegue conmigo, pues antes era una perrita callejera y sufrí maltratos. Mis últimos dueños me abandonaron y me golpearon, pero lo he superado. 
-                        ¡Dame la oportunidad de ser tu mejor amiga para siempre! 
-                    </p>
+                    <p><?=isset($mascota)?$mascota->Historia:'';?></p>
                 </div>                                    
             </div>
             <div class="infoExtra">
-                <form method="GET" action="#pregunta">
+                <form method="POST" action="#pregunta">
                     <div class="btnPregunta"><button type="submit" class="btn btn-outline-danger morado">¡Pregunta acerca de mi!</button></div>
                 </form>
                 <hr>
-                <form method="GET" action="formularioAdopcion.html" target="_blank">
+                <form method="POST" action="formularioAdopcion.html" target="_blank">
                     <div class="btnAdoptame"><button type="submit" class="btn btn-outline-success verde">¡Adóptame!</button></div>
                 </form>
                 <hr>
                 <div class="card border-morado">                    
                     <div class="card-header bg-morado">
-                        <h5 class="card-title">Refugio Animal Alfa A.C.</h5>
+                        <h5 class="card-title"><?=isset($refugio)?$refugio->Nombre:'';?></h5>
                     </div> 
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
                             <img class="img-info-refugio" src="img/locacion.png" alt="Locación">
-                            Calle 24 de Febrero #1 Uriangato, Gto.
+                            <?=isset($refugio)?$refugio->Direccion:'';?>
                         </li>
                         <li class="list-group-item">
                             <img class="img-info-refugio" src="img/email.png" alt="Email">
-                            <a href="mailto:amigofielgto@gmail.com">amigofielgto@gmail.com</a>
+                            <a href="mailto:<?=isset($refugio)?$refugio->Email:'';?>"><?=isset($refugio)?$refugio->Email:'';?></a>
                         </li>
                     </ul>
                     <div class="card-body">
                         <form>
-                            <div class="btnRefugio"><button type="button" class="btn btn-outline-danger morado">Más sobre Animal Alfa</button></div>
+                            <div class="btnRefugio"><button type="button" class="btn btn-outline-danger morado">Conoce más</button></div>
                         </form>
                     </div>
                 </div>
