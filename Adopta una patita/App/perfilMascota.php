@@ -45,14 +45,14 @@
                             }                            
                         ?>
                         <div class="img-principal">
-                            <img class="img-principal" src="<?=isset($imagen1)?$imagen1:'';?>" alt="imagen1Principal">
+                            <img id="imgPrincipal" class="img-principal" src="<?=isset($imagen1)?$imagen1:'';?>" alt="imagen1Principal">
                         </div>
                         <div class="img-miniaturas">
-                            <img class="img-principal" src="<?=isset($imagen1)?$imagen1:'';?>" alt="imagen1">
+                            <img class="miniatura active" src="<?=isset($imagen1)?$imagen1:'';?>" alt="imagen1" onclick="cambiarImg(this)">
                             <?php if(!empty($imagen2)){ ?>                                                                
-                                <img class="miniatura" src="<?=$imagen2?>" alt="imagen2">                                                                   
+                                <img class="miniatura" src="<?=$imagen2?>" alt="imagen2" onclick="cambiarImg(this)">                                                                   
                             <?php }if(!empty($imagen3)){ ?>    
-                                <img class="miniatura" src="<?=$imagen3?>" alt="imagen3"> 
+                                <img class="miniatura" src="<?=$imagen3?>" alt="imagen3" onclick="cambiarImg(this)"> 
                             <?php }?>                                                                  
                         </div>                                                      
                     </div> 
@@ -61,12 +61,12 @@
                         <div class="datosBasicos mb-2">
                             <span class="dato-bold">Raza: </span><span><?=isset($mascota)?$mascota->Raza:'';?></span><br>
                             <span class="dato-bold">Color: </span><span><?=isset($mascota)?$mascota->Color:'';?></span><br>
-                            <span class="dato-bold">Sexo: </span><span><?=isset($mascota)?$mascota->Sexo:'';?></span><br>
+                            <span class="dato-bold">Sexo: </span><span><?=isset($mascota)?($mascota->Sexo=='H')?'Hembra':'Macho':'';?></span><br>
                             <span class="dato-bold">Edad: </span><span><?=isset($mascota)?$mascota->Edad:'';?></span><br>                        
                             <span class="dato-bold">Peso: </span><span><?=isset($mascota)?$mascota->Peso:'';?></span><br>
                             <span class="dato-bold">Tamaño: </span><span><?=isset($mascota)?$mascota->Tamanio:'';?></span><br>
-                            <span class="dato-bold">Esterilizado: </span><span><?=isset($mascota)?$mascota->Esterilizado:'';?></span><br>
-                            <span class="dato-bold">Refugio: </span><a href="<?=isset($mascota)?$refugio->Sitio_web:'';?>"><?=isset($mascota)?$refugio->Nombre:'';?></a><br>
+                            <span class="dato-bold">Esterilizado: </span><span><?=isset($mascota)?($mascota->Esterilizado==1)?'Sí':'No':'';?></span><br>
+                            <span class="dato-bold">Refugio: </span><a target="_blank" href="<?=isset($mascota)?$refugio->Sitio_web:'';?>"><?=isset($mascota)?$refugio->Nombre:'';?></a><br>
                         </div>  
                         <hr>
                         <h4>Un poco sobre mi</h4>
@@ -82,9 +82,10 @@
                 </div>                                    
             </div>
             <div class="infoExtra">
-                <form method="POST" action="#pregunta">
+                <!-- <form method="POST" action="#pregunta">
                     <div class="btnPregunta"><button type="submit" class="btn btn-outline-danger morado">¡Pregunta acerca de mi!</button></div>
-                </form>
+                </form> -->
+                <div class="btnPregunta"><button class="btn btn-outline-danger morado"><a href="#pregunta">¡Pregunta acerca de mi!</a></button></div>
                 <hr>
                 <form method="POST" action="formularioAdopcion.html" target="_blank">
                     <div class="btnAdoptame"><button type="submit" class="btn btn-outline-success verde">¡Adóptame!</button></div>

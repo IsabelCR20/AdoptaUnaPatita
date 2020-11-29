@@ -1,4 +1,9 @@
 document.addEventListener('DOMContentLoaded', function(){          
+    var imgs = document.getElementsByClassName("miniatura");
+    for (let i = 0; i < imgs.length; i++){
+        //imgs[i].classList.remove("active");
+    } 
+    //debugger;
     $('#frmPreguntaMascota').bootstrapValidator({        
         fields: {            
             txtNombre: {
@@ -70,3 +75,12 @@ document.addEventListener('DOMContentLoaded', function(){
         }
     });  
 });
+
+function cambiarImg(img){
+    var imgs = $(".miniatura");
+    for (let i = 0; i < imgs.length; i++){
+        imgs[i].classList.remove("active");
+    }        
+    $("#imgPrincipal").attr("src", img.src);
+    img.classList.add("active");
+}; 

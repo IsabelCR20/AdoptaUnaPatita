@@ -58,6 +58,9 @@
     height: 100px ;
     margin: 5px 0 5px 5px;
 }
+.miniatura.active{
+    opacity: .6;
+}
 .datosMascota{
     max-width: 300px;
     /*border:1px solid purple;*/
@@ -95,6 +98,16 @@ h4{
 .verde{
     border-color: #6AA037 ;
     color:#6AA037;
+}
+.infoExtra .btnPregunta a{
+    text-decoration: none; 
+    color:#BD3898;
+}
+.infoExtra .btnPregunta a:hover{
+    color: white; 
+}
+.infoExtra .btn:hover a{    
+    color: white; 
 }
 .pregunta button:hover, .btnAdoptame button:hover ,.bg-green {
     background-color: #6AA037;

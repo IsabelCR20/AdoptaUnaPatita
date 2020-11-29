@@ -3,10 +3,10 @@ la BD -->
 <?php
 class Conexion
 {
-    private static $db = 'id15525639_adoptapatita';
+    private static $db = 'ADOPTAPATITA';
     private static $servidor = 'localhost';
-    private static $usuario = 'id15525639_root';
-    private static $password = 'Milyunanoches123*';
+    private static $usuario = 'root';
+    private static $password = 'root';
     private static $conexion  = null;
 
     public function __construct() {
