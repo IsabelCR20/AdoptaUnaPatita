@@ -15,7 +15,8 @@
     
     
     <!--<iframe id="frame-menu" scrolling="no" seamless src="menu.html" frameborder="0"></iframe>-->
-    
+	
+	
     <div class="container h-100">
 		<div class="d-flex justify-content-center h-100">
 			<div class="user_card">
@@ -25,18 +26,18 @@
 					</div>
 				</div>
 				<div class="d-flex justify-content-center form_container">
-					<form id="frmLogin">
+					<form id="frmLogin" action="script/login.php" method="POST">
 						<div class="input-group mb-3">
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-envelope"></i></span>
 							</div>
-							<input type="email" name="txtEmail" id="txtEmail" class="form-control input_user" value="" placeholder="Correo">
+							<input type="email" name="txtEmail" id="txtEmail" class="form-control input_user" placeholder="Correo">
 						</div>
 						<div class="input-group mb-2">
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-key"></i></span>
 							</div>
-							<input type="password" name="txtPass" id="txtPass" class="form-control input_pass" value="" placeholder="Contraseña">
+							<input type="password" name="txtPass" id="txtPass" class="form-control input_pass" placeholder="Contraseña">
 						</div>
 						<div class="form-group">
 							<div class="custom-control custom-checkbox">
@@ -44,12 +45,25 @@
 								<label class="custom-control-label" for="customControlInline">Mantener sesión iniciada</label>
 							</div>
 						</div>
-							<div class="d-flex justify-content-center mt-3 login_container">
-				 	<button type="button" name="button" class="btn login_btn">Acceder</button>
-				   </div>
+						<div class="d-flex justify-content-center mt-3 login_container">
+				 			<button type="submit" name="button" class="btn login_btn">Acceder</button>
+				   		</div>
 					</form>
 				</div>
-		
+				<?php
+					session_start();
+					if(isset($_SESSION['error'])){
+						?>
+						<div class="alert alert-warning alert-dismissible fade show" role="alert">
+							<strong>Holy guacamole!</strong> Usuario o contraseña incorrectos!
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<?php
+						unset($_SESSION['error']);
+					}
+				?>
 				<div class="mt-4">
 					<div class="d-flex justify-content-center links">
 						<a href="#">Olvidaste tu contraseña?</a>
