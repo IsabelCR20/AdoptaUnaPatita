@@ -20,7 +20,7 @@
                 $this->conectar();
                 $lista = array();
 
-                $sentenciaSQL = "SELECT * FROM MASCOTAS;";
+                $sentenciaSQL = $this->conexion->prepare("SELECT * FROM MASCOTAS;");
                 $sentenciaSQL->execute();
 
                 foreach($sentenciaSQL->fetchAll(PDO::FETCH_OBJ) as $fila){
@@ -57,7 +57,7 @@
                 $this->conectar();
                 $registro = null;
 
-                $sentenciaSQL = "SELECT * FROM MASCOTAS WHERE ID_MASCOTA = ?;";
+                $sentenciaSQL = $this->conexion->prepare("SELECT * FROM MASCOTAS WHERE ID_MASCOTA = ?;");
                 $sentenciaSQL->execute([$id]);
 
                 $fila=$sentenciaSQL->fetch(PDO::FETCH_OBJ);
