@@ -12,8 +12,8 @@
         public $Descripcion;
         public $Historia;
         public $Imagen1;
-        public $Imagen1;
-        public $Imagen1;
+        public $Imagen2;
+        public $Imagen3;
         public $Id_Refugio;
 
         public function __construct($Id_Mascota,
@@ -28,8 +28,8 @@
         $Descripcion,
         $Historia,
         $Imagen1,
-        $Imagen1,
-        $Imagen1,
+        $Imagen2,
+        $Imagen3,
         $Id_Refugio){
             $this->Id_Mascota = $Id_Mascota;
             $this->Nombre = $Nombre;
@@ -43,8 +43,8 @@
             $this->Descripcion = $Descripcion;
             $this->Historia = $Historia;
             $this->Imagen1 = $Imagen1;
-            $this->Imagen1 = $Imagen1;
-            $this->Imagen1 = $Imagen1;
+            $this->Imagen1 = $Imagen2;
+            $this->Imagen1 = $Imagen3;
             $this->Id_Refugio = $Id_Refugio;
         }
     }

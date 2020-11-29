@@ -21,7 +21,7 @@
                 $this->conectar();
                 $registro = null;
     
-                $sentenciaSQL = "SELECT * FROM REFUGIOS WHERE ID_REFUGIO = ?";
+                $sentenciaSQL = "SELECT * FROM REFUGIOS WHERE ID_REFUGIO = ?;";
                 $sentenciaSQL->execute([$id]);
     
                 $fila=$sentenciaSQL->fetch(PDO::FETCH_OBJ);

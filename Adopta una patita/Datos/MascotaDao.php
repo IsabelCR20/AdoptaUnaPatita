@@ -20,7 +20,7 @@
                 $this->conectar();
                 $lista = array();
 
-                $sentenciaSQL = "SELECT * FROM MASCOTAS";
+                $sentenciaSQL = "SELECT * FROM MASCOTAS;";
                 $sentenciaSQL->execute();
 
                 foreach($sentenciaSQL->fetchAll(PDO::FETCH_OBJ) as $fila){
@@ -58,7 +58,7 @@
             $this->conectar();
             $registro = null;
 
-            $sentenciaSQL = "SELECT * FROM MASCOTAS WHERE ID_MASCOTA = ?";
+            $sentenciaSQL = "SELECT * FROM MASCOTAS WHERE ID_MASCOTA = ?;";
             $sentenciaSQL->execute([$id]);
 
             $fila=$sentenciaSQL->fetch(PDO::FETCH_OBJ);
@@ -93,7 +93,7 @@
 		try 
 		{
 			$this->conectar();
-            $sentenciaSQL = $this->conexion->prepare("DELETE FROM MASCOTAS WHERE ID_MASCOTA = ?");			          
+            $sentenciaSQL = $this->conexion->prepare("DELETE FROM MASCOTAS WHERE ID_MASCOTA = ?;");			          
             $sentenciaSQL->execute(array($id));
             return true;
 		} catch (Exception $e) 
@@ -106,7 +106,7 @@
     
     public function agregar(Mascota $nuevo){
         try {
-            $sql = "INSERT INTO MASCOTAS VALUES(NULL,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $sql = "INSERT INTO MASCOTAS VALUES(NULL,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
             $this->conectar();
             $this->conexion->prepare($sql)->execute(array(
                 $nuevo->Nombre,
@@ -120,8 +120,8 @@
                 $nuevo->Descripcion,
                 $nuevo->Historia,
                 $nuevo->Imagen1,
-                $nuevo->Imagen1,
-                $nuevo->Imagen1,
+                $nuevo->Imagen2,
+                $nuevo->Imagen3,
                 $nuevo->Id_Refugio
             ));
             return true;
@@ -131,6 +131,5 @@
 		}finally{
             Conexion::cerrarConexion();
         }
-
     }
 ?>
