@@ -23,7 +23,6 @@
                 $lista = array();
     
                 $sentenciaSQL = $this->conexion->prepare("SELECT * FROM REFUGIOS;");
-                $sentenciaSQL->execute([$id]);
     
                 $sentenciaSQL->execute();
     
