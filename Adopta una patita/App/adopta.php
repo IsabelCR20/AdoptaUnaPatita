@@ -17,7 +17,27 @@
     
     <!-- Contenido -->
     <h1>¡Encuentra a tu amigo fiel!</h1>
-    
+    <?php
+      $listaMascotas;
+      $listaRefugios;
+
+      require_once "../Datos/MascotaDao.php";
+      require_once "../Datos/RefugioDao.php";
+
+      $daoM = new MascotaDao();
+      $daoR = new RefugioDao();
+
+      $listaRefugios = $daoR->obtenerTodos();
+      if(isset($_POST["bRefugio"])){    // Hace busqueda por filtro
+        $refugio = $_POST["bRefugio"];
+        $tamanio = $_POST["bTamanio"];
+        $sexo = $_POST["bSexo"];
+        $edad = $_POST["bEdad"];
+        $listaMascotas = $daoM->obtenerFiltro($refugio, $tamanio, $sexo, $edad);
+      } else {          // Muestra todo
+         $listaMascotas =  $daoM->obtenerTodos();
+      }
+    ?>
     <div id="contenido col-sm-12">
         <!-- Filtro  -->
         <div id="cont-izq" class="col-sm-3">
@@ -28,9 +48,12 @@
                 <div class="card-body estilo-tarjeta">
                     <label for="cbrefugio">Refugio: </label>
                     <select id="cbrefugio" class="form-control col-sm-11">
-                        <option>Cualquiera</option>
-                        <option>Amigo Alfa</option>
-                        <option>PETA</option>
+                        <option value="%">Cualquiera</option>
+                        <?php
+                          foreach($listaRefugios as $refugio){
+                            echo '<option value="'.$refugio->Id_Refugio.'">'.$refugio->Nombre.'</option>';
+                          }
+                        ?>
                     </select><br>
                     <label for="cbEspecie">Especie: </label>
                     <select id="cbEspecie" class="form-control col-sm-11">

@@ -47,31 +47,32 @@
             $this->Imagen3 = $Imagen3;
             $this->Id_Refugio = $Id_Refugio;
         }
-    }
+    
 
-    public function __construct1(
-        $Nombre,
-        $Raza,
-        $Color,
-        $Sexo,
-        $Edad,
-        $Peso,
-        $Tamanio,
-        $Esterilizado,
-        $Descripcion,
-        $Historia,
-        $Id_Refugio){
-            $this->Nombre = $Nombre;
-            $this->Raza = $Raza;
-            $this->Color = $Color;
-            $this->Sexo = $Sexo;
-            $this->Edad = $Edad;
-            $this->Peso = $Peso;
-            $this->Tamanio = $Tamanio;
-            $this->Esterilizado = $Esterilizado;
-            $this->Descripcion = $Descripcion;
-            $this->Historia = $Historia;
-            $this->Id_Refugio = $Id_Refugio;
+        public function __construct1(
+            $Nombre,
+            $Raza,
+            $Color,
+            $Sexo,
+            $Edad,
+            $Peso,
+            $Tamanio,
+            $Esterilizado,
+            $Descripcion,
+            $Historia,
+            $Id_Refugio){
+                $this->Nombre = $Nombre;
+                $this->Raza = $Raza;
+                $this->Color = $Color;
+                $this->Sexo = $Sexo;
+                $this->Edad = $Edad;
+                $this->Peso = $Peso;
+                $this->Tamanio = $Tamanio;
+                $this->Esterilizado = $Esterilizado;
+                $this->Descripcion = $Descripcion;
+                $this->Historia = $Historia;
+                $this->Id_Refugio = $Id_Refugio;
+            
         }
     }
 ?>
