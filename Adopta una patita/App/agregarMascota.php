@@ -35,7 +35,7 @@
 
     <?php
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-            var_dump($_POST);
+            //var_dump($_POST);
             $esterilizado = isset($_POST['chkEsterilizado'])?1:0;
             $nuevo = new Mascota(
                 $_POST['txtNombre'],
@@ -49,8 +49,8 @@
                 $_POST['txtDescripcion'],
                 $_POST['txtHistoria']
             );
-            var_dump($_FILES);
-            //$dao->insertar($nuevo, $_FILES);
+            //var_dump($_FILES);
+            $dao->insertar($nuevo, $_FILES);
         }
     ?>
 
