@@ -35,10 +35,9 @@
 
     <?php
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-            //var_dump($_POST);
+            var_dump($_POST);
             $esterilizado = isset($_POST['chkEsterilizado'])?1:0;
-            
-            /*$nuevo = new Mascota(
+            $nuevo = new Mascota(
                 $_POST['txtNombre'],
                 $_POST['txtRaza'],
                 $_POST['txtColor'],
@@ -50,12 +49,13 @@
                 $_POST['txtDescripcion'],
                 $_POST['txtHistoria']
             );
-            $dao->insertar($nuevo);*/
+            var_dump($_FILES);
+            //$dao->insertar($nuevo, $_FILES);
         }
     ?>
 
     <div class="container my-5 p-5 bg-light">
-        <form method="post">
+        <form enctype="multipart/form-data" method="post">
             <div class="form-group row">
                 <label for="" class="col-sm-2 col-form-label">Nombre:</label>
                 <div class="col-sm-10">
@@ -126,9 +126,10 @@
                 <div class="row">
                     <legend class="col-form-label col-sm-2 pt-0">Imagenes:</legend>
                     <div class="col-ms-10">
-                        <input type="file" class="form-control-file" id="imagen1">
-                        <input type="file" class="form-control-file" id="imagen2">
-                        <input type="file" class="form-control-file" id="imagen3">
+                        <input type="hidden" name="MAX_FILE_SIZE" value="100000" />
+                        <input type="file" class="form-control-file" id="imagen1" name="imagen1">
+                        <input type="file" class="form-control-file" id="imagen2" name="imagen2">
+                        <input type="file" class="form-control-file" id="imagen3" name="imagen3">
                     </div>
                 </div>
             </fieldset>
