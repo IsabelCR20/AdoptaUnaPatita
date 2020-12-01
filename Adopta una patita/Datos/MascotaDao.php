@@ -63,7 +63,6 @@
                                                 SEXO like ? and
                                                 EDAD like ?;");
                 $sentenciaSQL->execute(array($refugio, $tamanio, $sexo, $edad));
-
                 foreach($sentenciaSQL->fetchAll(PDO::FETCH_OBJ) as $fila){
                     $obj = new Mascota(
                         $fila->ID_MASCOTA,
@@ -164,27 +163,27 @@
                 $clave = $this->conexion->lastInsertId();
 
                 $dir_subida = "database/";
-                if($archivos['imagen1']['size'] > 0){
-                    $ext = pathinfo($archivos['imagen1']['name'], PATHINFO_EXTENSION);
-                    move_uploaded_file($archivos['imagen1']['tmp_name'], $dir_subida.$clave."-1.".$ext);
+                if($archivos['imagen']['size'][0] > 0){
+                    $ext = pathinfo($archivos['imagen']['name'][0], PATHINFO_EXTENSION);
+                    move_uploaded_file($archivos['imagen']['tmp_name'][0], $dir_subida.$clave."-1.".$ext);
                     $update1 = "UPDATE MASCOTAS SET IMAGEN1 = ? WHERE ID_MASCOTA = ?";
                     $this->conexion->prepare($update1)->execute(array(
                         $dir_subida.$clave."-1.".$ext,
                         $clave  // ISABEL: quité un ; que estaba aquí
                     ));
                 }
-                if($archivos['imagen2']['size'] > 0){
-                    $ext = pathinfo($archivos['imagen2']['name'], PATHINFO_EXTENSION);
-                    move_uploaded_file($archivos['imagen2']['tmp_name'], $dir_subida.$clave."-2.".$ext);
+                if($archivos['imagen']['size'][1] > 0){
+                    $ext = pathinfo($archivos['imagen']['name'][1], PATHINFO_EXTENSION);
+                    move_uploaded_file($archivos['imagen']['tmp_name'][1], $dir_subida.$clave."-2.".$ext);
                     $update1 = "UPDATE MASCOTAS SET IMAGEN2 = ? WHERE ID_MASCOTA = ?";
                     $this->conexion->prepare($update1)->execute(array(
                         $dir_subida.$clave."-2.".$ext,
                         $clave   // ISABEL: quité un ; que estaba aquí
                     ));
                 }
-                if($archivos['imagen3']['size'] > 0){
-                    $ext = pathinfo($archivos['imagen3']['name'], PATHINFO_EXTENSION);
-                    move_uploaded_file($archivos['imagen3']['tmp_name'], $dir_subida.$clave."-3.".$ext);
+                if($archivos['imagen']['size'][2] > 0){
+                    $ext = pathinfo($archivos['imagen']['name'][2], PATHINFO_EXTENSION);
+                    move_uploaded_file($archivos['imagen']['tmp_name'][2], $dir_subida.$clave."-3.".$ext);
                     $update1 = "UPDATE MASCOTAS SET IMAGEN3 = ? WHERE ID_MASCOTA = ?";
                     $this->conexion->prepare($update1)->execute(array(
                         $dir_subida.$clave."-1.".$ext,

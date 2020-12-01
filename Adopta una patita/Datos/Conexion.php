@@ -3,6 +3,7 @@ la BD -->
 <?php
 class Conexion
 {
+
     private static $db = 'adoptapatita';
     private static $servidor = 'localhost:3306';
     private static $usuario = 'root';

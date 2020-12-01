@@ -72,7 +72,8 @@
                 $this->Descripcion = $Descripcion;
                 $this->Historia = $Historia;
                 $this->Id_Refugio = $Id_Refugio;
-            
         }
+
+        public function __construct2(){}
     }
 ?>
