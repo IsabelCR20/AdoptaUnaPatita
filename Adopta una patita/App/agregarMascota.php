@@ -71,8 +71,8 @@
             );*/
             //echo 'Impresion de post: ';
             //var_dump($_POST);
-            echo 'otra cosa';
-            var_dump($nuevo);
+            //echo 'otra cosa';
+            //var_dump($nuevo);
             $dao->agregar($nuevo, $_FILES);
             //$dao->insertar($nuevo, $_FILES);
             //header("Location: agregarMascota.php");
