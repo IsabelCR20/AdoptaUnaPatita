@@ -36,13 +36,25 @@
 
     <?php
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-            //var_dump($_POST);
+            var_dump($_POST);
             //echo "<br>";
             //var_dump($_FILES['imagen']['name'][0]);
             $esterilizado = isset($_POST['chkEsterilizado'])?true:false;
-            //echo "<br>";
-            //var_dump($esterilizado);
-            $nuevo = new Mascota();
+            echo "<br>";
+            var_dump($esterilizado);
+            $nuevo = new Mascota(
+                /*$_POST['txtNombre'],
+                $_POST['txtRaza'],
+                $_POST['txtColor'],
+                $_POST['gridRadios'],
+                $_POST['txtEdad'],
+                $_POST['txtPeso'],
+                $_POST['txtTamanio'],
+                $esterilizado,
+                $_POST['txtDescripcion'],
+                $_POST['txtHistoria'],
+                1*/
+            );
             var_dump($nuevo);
             //$dao->insertar($nuevo, $_FILES);
             //header("Location: agregarMascota.php");

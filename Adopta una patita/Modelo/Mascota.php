@@ -42,9 +42,9 @@
             $this->Esterilizado = $Esterilizado;
             $this->Descripcion = $Descripcion;
             $this->Historia = $Historia;
-            $this->$Imagen1 = $Imagen1;
-            $this->$Imagen2 = $Imagen2;
-            $this->$Imagen3 = $Imagen3;
+            $this->Imagen1 = $Imagen1;
+            $this->Imagen2 = $Imagen2;
+            $this->Imagen3 = $Imagen3;
             $this->Id_Refugio = $Id_Refugio;
         }
     
@@ -72,7 +72,6 @@
                 $this->Descripcion = $Descripcion;
                 $this->Historia = $Historia;
                 $this->Id_Refugio = $Id_Refugio;
-            
         }
 
         public function __construct2(){}
