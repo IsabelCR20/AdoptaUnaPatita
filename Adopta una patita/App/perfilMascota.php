@@ -31,7 +31,7 @@
     
     <?php              
         if(isset($_POST["formPregunta"])){
-            $textoValidacion="";		
+            $textoValidacion="";
             if (!isset($_POST["txtNombre"]) || strlen(trim($_POST["txtNombre"]))<3 ||
                 strlen(trim($_POST["txtNombre"]))>50)
                 $textoValidacion .="<li>El nombre debe tener entre 3 y 50 caracteres.</li>";
@@ -116,7 +116,7 @@
                         <div class="datosBasicos mb-2">
                             <span class="dato-bold">Raza: </span><span><?=isset($mascota)?$mascota->Raza:'';?></span><br>
                             <span class="dato-bold">Color: </span><span><?=isset($mascota)?$mascota->Color:'';?></span><br>
-                            <span class="dato-bold">Sexo: </span><span><?=isset($mascota)?($mascota->Sexo=='H')?'Hembra':'Macho':'';?></span><br>
+                            <span class="dato-bold">Sexo: </span><span><?=isset($mascota)?($mascota->Sexo=='F')?'Femenino':'Masculino':'';?></span><br>
                             <span class="dato-bold">Edad: </span><span><?=isset($mascota)?$mascota->Edad:'';?></span><br>                        
                             <span class="dato-bold">Peso: </span><span><?=isset($mascota)?$mascota->Peso:'';?></span><br>
                             <span class="dato-bold">Tamaño: </span><span><?=isset($mascota)?$mascota->Tamanio:'';?></span><br>
@@ -173,10 +173,8 @@
                         <?php } ?>
                     </ul>
                     <?php if(isset($refugio) && !empty($refugio->Sitio_web)){ ?>
-                        <div class="card-body">
-                            <form>
-                                <div class="btnRefugio"><button type="button" class="btn btn-outline-danger morado">Conoce más</button></div>
-                            </form>
+                        <div class="card-body refugioLink">
+                            <div class="btnRefugio"><button class="btn btn-outline-danger morado"><a href="<?=$refugio->Sitio_web?>" target="_blank">Conoce más</a></button></div>
                         </div>
                     <?php } ?>
                 </div>
@@ -192,26 +190,26 @@
                     <form action="perfilMascota.php#pregunta" id="frmPreguntaMascota" method="POST">
                         <div class="form-row">
                             <div class="form-group col-md-6">                            
-                                <input type="text" class="form-control" name="txtNombre" placeholder="Nombre*" required>                           
+                                <input type="text" value="<?=isset($_POST['txtNombre'])&&isset($msgError)?$_POST['txtNombre']:'';?>" class="form-control" name="txtNombre" placeholder="Nombre*" required>                           
                             </div>
                             <div class="form-group col-md-6">                            
-                                <input type="text" class="form-control" name="txtApellidos" placeholder="Apellido(s)*" required>                            
+                                <input type="text" value="<?=isset($_POST['txtApellidos'])&&isset($msgError)?$_POST['txtApellidos']:'';?>" class="form-control" name="txtApellidos" placeholder="Apellido(s)*" required>                            
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">                            
-                                <input type="email" class="form-control" name="txtEmail" placeholder="Email*" required>                           
+                                <input type="email" value="<?=isset($_POST['txtEmail'])&&isset($msgError)?$_POST['txtEmail']:'';?>" class="form-control" name="txtEmail" placeholder="Email*" required>                           
                             </div>
                             <div class="form-group col-md-3">                            
-                                <input type="text" class="form-control" name="txtCiudad" placeholder="Ciudad*" required>                            
+                                <input type="text" value="<?=isset($_POST['txtCiudad'])&&isset($msgError)?$_POST['txtCiudad']:'';?>" class="form-control" name="txtCiudad" placeholder="Ciudad*" required>                            
                             </div>
                             <div class="form-group col-md-3">                            
-                                <input type="tel" class="form-control" name="txtTelefono" placeholder="Número de teléfono (opcional)">                            
+                                <input type="tel" value="<?=isset($_POST['txtTelefono'])&&isset($msgError)?$_POST['txtTelefono']:'';?>" class="form-control" name="txtTelefono" placeholder="Número de teléfono (opcional)">                            
                             </div>
                         </div>
                         <div class="form-row"> 
                             <div class="form-group col-md-6">                            
-                                <textarea name="txtMensaje" class="form-control" rows="4" placeholder="Escribe aquí lo que quieres saber de Manchas...*" required></textarea>                            
+                                <textarea form="frmPreguntaMascota" name="txtMensaje" class="form-control" rows="4" placeholder="Escribe aquí lo que quieres saber de Manchas...*" required><?=isset($_POST['txtMensaje'])&&isset($msgError)?$_POST['txtMensaje']:'';?></textarea>                            
                             </div> 
                             <div class="form-group col-md-6">
                                 <div>    
