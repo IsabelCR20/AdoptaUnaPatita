@@ -4,10 +4,10 @@ la BD -->
 class Conexion
 {
 
-    private static $db = 'adoptapatita';
-    private static $servidor = 'localhost:3306';
-    private static $usuario = 'root';
-    private static $password = 'root';
+    private static $db = 'ADOPTAPATITA';
+    private static $servidor = 'localhost';
+    private static $usuario = 'remoto';
+    private static $password = 'remoto1';
     private static $conexion  = null;
 
     public function __construct() {
