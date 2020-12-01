@@ -36,14 +36,28 @@
 
     <?php
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-            var_dump($_POST);
-            //echo "<br>";
+            //var_dump($_POST);
+            //echo "<br> Cosas de archivos: ";
             //var_dump($_FILES['imagen']['name'][0]);
-            $esterilizado = isset($_POST['chkEsterilizado'])?true:false;
+            //$esterilizado = isset($_POST['chkEsterilizado'])?true:false;
+            $esterilizado = isset($_POST['chkEsterilizado'])?1:0;
             echo "<br>";
-            var_dump($esterilizado);
+            //var_dump($esterilizado);
+            $nuevo = new Mascota();
+            $nuevo->Nombre = $_POST['txtNombre'];
+            $nuevo->Raza = $_POST['txtRaza'];
+            $nuevo->Color = $_POST['txtColor'];
+            $nuevo->Sexo = $_POST['gridRadios'];
+            $nuevo->Edad = $_POST['txtEdad'];
+            $nuevo->Peso = $_POST['txtPeso'];
+            $nuevo->Tamanio = $_POST['txtTamanio'];
+            $nuevo->Esterilizado = $esterilizado;
+            $nuevo->Descripcion = $_POST['txtDescripcion'];
+            $nuevo->Historia = $_POST['txtHistoria'];
+            $nuevo->Id_Refugio   = 1;
+            /*
             $nuevo = new Mascota(
-                /*$_POST['txtNombre'],
+                $_POST['txtNombre'],
                 $_POST['txtRaza'],
                 $_POST['txtColor'],
                 $_POST['gridRadios'],
@@ -53,9 +67,13 @@
                 $esterilizado,
                 $_POST['txtDescripcion'],
                 $_POST['txtHistoria'],
-                1*/
-            );
+                1
+            );*/
+            //echo 'Impresion de post: ';
+            //var_dump($_POST);
+            echo 'otra cosa';
             var_dump($nuevo);
+            $dao->agregar($nuevo, $_FILES);
             //$dao->insertar($nuevo, $_FILES);
             //header("Location: agregarMascota.php");
         }

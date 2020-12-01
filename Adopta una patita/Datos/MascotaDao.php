@@ -24,6 +24,23 @@
                 $sentenciaSQL->execute();
 
                 foreach($sentenciaSQL->fetchAll(PDO::FETCH_OBJ) as $fila){
+                    $obj = new Mascota();
+                    $obj->Id_Mascota = $fila->ID_MASCOTA;
+                    $obj->Nombre = $fila->NOMBRE;
+                    $obj->Raza = $fila->RAZA;
+                    $obj->Color = $fila->COLOR;
+                    $obj->Sexo = $fila->SEXO;
+                    $obj->Edad = $fila->EDAD;
+                    $obj->Peso = $fila->PESO;
+                    $obj->Tamanio = $fila->TAMANIO;
+                    $obj->Esterilizado = $fila->ESTERILIZADO;
+                    $obj->Descripcion = $fila->DESCRIPCION;
+                    $obj->Historia = $fila->HISTORIA;
+                    $obj->Imagen1 = $fila->IMAGEN1;
+                    $obj->Imagen2 = $fila->IMAGEN2;
+                    $obj->Imagen3 = $fila->IMAGEN3;
+                    $obj->Id_Refugio = $fila->ID_REFUGIO;     
+                                   /*
                     $obj = new Mascota(
                         $fila->ID_MASCOTA,
                         $fila->NOMBRE,
@@ -40,7 +57,7 @@
                         $fila->IMAGEN2,
                         $fila->IMAGEN3,
                         $fila->ID_REFUGIO
-                    );
+                    );*/
                     $lista[] = $obj;
                 }
                 return $lista;
@@ -64,6 +81,23 @@
                                                 EDAD like ?;");
                 $sentenciaSQL->execute(array($refugio, $tamanio, $sexo, $edad));
                 foreach($sentenciaSQL->fetchAll(PDO::FETCH_OBJ) as $fila){
+                    $obj = new Mascota();
+                    $obj->Id_Mascota = $fila->ID_MASCOTA;
+                    $obj->Nombre = $fila->NOMBRE;
+                    $obj->Raza = $fila->RAZA;
+                    $obj->Color = $fila->COLOR;
+                    $obj->Sexo = $fila->SEXO;
+                    $obj->Edad = $fila->EDAD;
+                    $obj->Peso = $fila->PESO;
+                    $obj->Tamanio = $fila->TAMANIO;
+                    $obj->Esterilizado = $fila->ESTERILIZADO;
+                    $obj->Descripcion = $fila->DESCRIPCION;
+                    $obj->Historia = $fila->HISTORIA;
+                    $obj->Imagen1 = $fila->IMAGEN1;
+                    $obj->Imagen2 = $fila->IMAGEN2;
+                    $obj->Imagen3 = $fila->IMAGEN3;
+                    $obj->Id_Refugio = $fila->ID_REFUGIO;    
+                    /*
                     $obj = new Mascota(
                         $fila->ID_MASCOTA,
                         $fila->NOMBRE,
@@ -80,7 +114,7 @@
                         $fila->IMAGEN2,
                         $fila->IMAGEN3,
                         $fila->ID_REFUGIO
-                    );
+                    );*/
                     $lista[] = $obj;
                 }
                 return $lista;
@@ -101,6 +135,23 @@
                 $sentenciaSQL->execute([$id]);
 
                 $fila=$sentenciaSQL->fetch(PDO::FETCH_OBJ);
+                $registro = new Mascota();
+                $registro->Id_Mascota = $fila->ID_MASCOTA;
+                $registro->Nombre = $fila->NOMBRE;
+                $registro->Raza = $fila->RAZA;
+                $registro->Color = $fila->COLOR;
+                $registro->Sexo = $fila->SEXO;
+                $registro->Edad = $fila->EDAD;
+                $registro->Peso = $fila->PESO;
+                $registro->Tamanio = $fila->TAMANIO;
+                $registro->Esterilizado = $fila->ESTERILIZADO;
+                $registro->Descripcion = $fila->DESCRIPCION;
+                $registro->Historia = $fila->HISTORIA;
+                $registro->Imagen1 = $fila->IMAGEN1;
+                $registro->Imagen2 = $fila->IMAGEN2;
+                $registro->Imagen3 = $fila->IMAGEN3;
+                $registro->Id_Refugio = $fila->ID_REFUGIO;    
+                /*
                 $registro = new Mascota(
                     $fila->ID_MASCOTA,
                     $fila->NOMBRE,
@@ -117,7 +168,7 @@
                     $fila->IMAGEN2,
                     $fila->IMAGEN3,
                     $fila->ID_REFUGIO
-                );
+                );*/
                 return $registro;
             } catch(Exception $e){
                 echo $e->getMessage();
@@ -162,13 +213,16 @@
                 ));
                 $clave = $this->conexion->lastInsertId();
 
-                $dir_subida = "database/";
+                $dir_subida = "recursos/";
+                //echo 'Archivos recibidos: ';
+                //var_dump($archivos);
                 if($archivos['imagen']['size'][0] > 0){
                     $ext = pathinfo($archivos['imagen']['name'][0], PATHINFO_EXTENSION);
                     move_uploaded_file($archivos['imagen']['tmp_name'][0], $dir_subida.$clave."-1.".$ext);
+                    $rutaFinal =  $dir_subida.$clave."-1.".$ext;
                     $update1 = "UPDATE MASCOTAS SET IMAGEN1 = ? WHERE ID_MASCOTA = ?";
                     $this->conexion->prepare($update1)->execute(array(
-                        $dir_subida.$clave."-1.".$ext,
+                        $rutaFinal,
                         $clave  // ISABEL: quité un ; que estaba aquí
                     ));
                 }

@@ -39,12 +39,13 @@
         //session_start(); //No sé si esto va aquí
         if(isset($_POST['clave'])){
             if($dao->eliminar($_POST['clave'])){
-                $_SESSION["msg"]="Mascota dada de baja correctamente";
+                $_SESSION["msg"]=$_POST['nombreMascElim']." se ha dado de baja correctamente";
                 $_SESSION["tipoMsg"]=1; //Mensaje de éxito
             }else{
                 $_SESSION["msg"]="Error al dar de baja";
                 $_SESSION["tipoMsg"]=0; //Mensaje de error
             }
+            $lista = $dao->obtenerTodos();
         }else{
             $lista = $dao->obtenerTodos();
         }
@@ -65,6 +66,7 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                         <form action="" method="POST">
+                            <input id="nombreMascElim" type="text" name="nombreMascElim" value="" class="d-none">                        
                             <button type="submit" name="clave" value="" class="btn btn-danger" id="btnAceptar">Aceptar</button>
                         </form>
                     </div>
@@ -125,7 +127,7 @@
             header("Location: index.html"); 
         }
     ?>
-    <script src="scripts/jquery-3.5.1.js"></script>
+    <script src="script/jquery-3.5.1.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
@@ -137,12 +139,17 @@
             
         });
          
-        function eliminar(clave,producto){
-            $("#producto").text(producto);
-            $("#btnAceptar").val(clave);
+        function eliminar(id,nombre){
+            // alert("hola Clave: " + id + "   produ:" +nombre);
+            $("#mascota").text(nombre);
+            $("#btnAceptar").val(id);
+            $("#nombreMascElim").val(nombre);
+            /*
             $("#mdlConfirmar").modal({
                 keyboard: false
-            });
+            });*/
+
+            $("#mdlConfirmar").modal('show');
         }
     </script>
 </body>
