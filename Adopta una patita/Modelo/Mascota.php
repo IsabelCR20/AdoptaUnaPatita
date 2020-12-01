@@ -72,10 +72,5 @@
             $this->Imagen3 = $Imagen3;
             $this->Id_Refugio = $Id_Refugio;
         }
-    
-
-       
-
-        
     }
 ?>
