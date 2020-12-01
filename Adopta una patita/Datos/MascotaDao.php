@@ -36,9 +36,9 @@
                         $fila->ESTERILIZADO,
                         $fila->DESCRIPCION,
                         $fila->HISTORIA,
-                        $fila->IMGAGEN1,
-                        $fila->IMGAGEN2,
-                        $fila->IMGAGEN3,
+                        $fila->IMAGEN1,
+                        $fila->IMAGEN2,
+                        $fila->IMAGEN3,
                         $fila->ID_REFUGIO
                     );
                     $lista[] = $obj;
