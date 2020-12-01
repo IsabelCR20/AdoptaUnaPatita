@@ -104,13 +104,13 @@
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="M" <?=isset($_POST['gridRadios'])&&$_POST['gridRadios']=="M"?"checked":"";?> <?=!isset($_POST['gridRadios'])?"checked":"";?> class="form-control">
                             <label class="form-check-label" for="gridRadios1">
-                                Macho
+                                Masculino
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="H" <?=isset($_POST['gridRadios'])&&$_POST['gridRadios']=="H"?"checked":"";?> class="form-control">
+                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="F" <?=isset($_POST['gridRadios'])&&$_POST['gridRadios']=="F"?"checked":"";?> class="form-control">
                             <label class="form-check-label" for="gridRadios2">
-                                Hembra
+                                Femenino
                             </label>
                         </div>
                     </div>
