@@ -245,6 +245,7 @@
                     ));
                 }
                 $this->conexion->commit();
+                return true;
             } catch (Exception $e){
                 echo $e->getMessage();
                 $this->conexion->rollBack();
