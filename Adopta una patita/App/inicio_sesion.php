@@ -14,7 +14,8 @@
 <body>
     
     
-    <!--<iframe id="frame-menu" scrolling="no" seamless src="menu.html" frameborder="0"></iframe>-->
+	
+	<iframe id="frame-menu" src="menu.html" frameborder="0" scrolling="no" seamless></iframe> 
 	
 	
     <div class="container h-100">
@@ -73,28 +74,14 @@
 		</div>
 	</div>
     <!-- Pie de pagina -->
-    <footer class="border-top">
-        <div class="columna">
-          <img src="img/logo-pata.png" alt="">
-        </div>
-        <div class="columna">
-            <h3>Contacto</h3>
-            <p><i class="fas fa-map-marker-alt"></i>Misión de San Pedro # 235, Colonia las misiones, Uriangato Gto.</p>
-            <p><i class="fas fa-phone-square-alt"></i>4451326752</p>
-            <p><i class="fas fa-envelope"></i>adoptaunapatita@gmail.com</p>
-        </div>
-        <div class="columna">
-            <h3>Redes sociales</h3>
-            <a href="#"><i class="fab fa-facebook"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-        </div> 
-    </footer>
-    <script src="script/jquery-3.5.1.js"></script>
+	<?php
+		require_once 'pie.php';
+	?>
+	<script src="script/jquery-3.5.1.js"></script>
+	<script src="script/iframe-menu.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script> <!-- Script del validador -->
-    <script src="script/iframe-menu.js"></script>
+    
     <script src="script/validarLogin.js "></script>
 </body>
 </html>

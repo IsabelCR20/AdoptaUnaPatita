@@ -3,27 +3,27 @@ var lkAdopta = document.getElementById("link_adopta"); // <a> de Adopta
 
 // Evento click de <a> Inicio
   link_index.onclick = function (){
-    top.postMessage('index', '*');
+    top.postMessage('index.html', '*');
   }
   // Evento click de <a> Adopta
   lkAdopta.onclick = function (){
-    top.postMessage('adopta', '*');
+    top.postMessage('adopta.php', '*');
   }
   // Evento click de <a> Refugios     
   link_refugios.onclick = function (){
-    top.postMessage('lista-refugios', '*');
+    top.postMessage('lista-refugios.html', '*');
   }
   // Evento click de <a> Contactanos
   link_contacta.onclick = function (){
-    top.postMessage('contactanos', '*');
+    top.postMessage('contactanos.html', '*');
   }
   // Evento click de <button> Registrate
   btn_registro.onclick = function (){
-    top.postMessage('registro', '*');
+    top.postMessage('registro.html', '*');
   }
   // Evento click de <button> Inicia Sesión   
   btn_inicio.onclick = function (){
-    top.postMessage('inicio_sesion', '*');
+    top.postMessage('inicio_sesion.php', '*');
   }
 
 /*
