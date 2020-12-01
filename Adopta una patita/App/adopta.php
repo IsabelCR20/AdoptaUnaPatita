@@ -23,17 +23,20 @@
 
       require_once "../Datos/MascotaDao.php";
       require_once "../Datos/RefugioDao.php";
+      require_once "../Modelo/Mascota.php";
 
       $daoM = new MascotaDao();
       $daoR = new RefugioDao();
 
       $listaRefugios = $daoR->obtenerTodos();
-      if(isset($_POST["bRefugio"])){    // Hace busqueda por filtro
-        $refugio = $_POST["bRefugio"];
-        $tamanio = $_POST["bTamanio"];
-        $sexo = $_POST["bSexo"];
-        $edad = $_POST["bEdad"];
+      if(isset($_POST["cbRefugio"])){    // Hace busqueda por filtro
+        $refugio = $_POST["cbRefugio"];
+        $tamanio = $_POST["cbTamanio"];
+        $sexo = $_POST["cbSexo"];
+        $edad = $_POST["cbEdad"];
         $listaMascotas = $daoM->obtenerFiltro($refugio, $tamanio, $sexo, $edad);
+        
+        //var_dump($listaMascotas);
       } else {          // Muestra todo
          $listaMascotas =  $daoM->obtenerTodos();
       }
@@ -46,8 +49,9 @@
                     Filtro de búsqueda
                 </div>
                 <div class="card-body estilo-tarjeta">
-                    <label for="cbrefugio">Refugio: </label>
-                    <select id="cbrefugio" class="form-control col-sm-11">
+                  <form id="frmFiltro" name="frmFiltro" method="POST">
+                    <label for="cbRefugio">Refugio: </label>
+                    <select id="cbRefugio" name="cbRefugio" class="form-control col-sm-11">
                         <option value="%">Cualquiera</option>
                         <?php
                           foreach($listaRefugios as $refugio){
@@ -55,124 +59,60 @@
                           }
                         ?>
                     </select><br>
-                    <label for="cbEspecie">Especie: </label>
-                    <select id="cbEspecie" class="form-control col-sm-11">
-                        <option>Cualquiera</option>
-                        <option>Canino</option>
-                        <option>Felino</option>
-                        <option>Roedor</option>
-                    </select><br>
                     <label for="cbTamanio">Tamaño: </label>
-                    <select id="cbTamanio" class="form-control col-sm-11">
-                        <option>Cualquiera</option>
-                        <option>Miniatura</option>
-                        <option>Pequeño</option>
-                        <option>Mediano</option>
-                        <option>Grande</option>
-                        <option>Gigante</option>
+                    <select id="cbTamanio" name="cbTamanio" class="form-control col-sm-11">
+                        <option value="%">Cualquiera</option>
+                        <option value="Miniatura">Miniatura</option>
+                        <option value="Pequeño">Pequeño</option>
+                        <option value="Mediano">Mediano</option>
+                        <option value="Grande">Grande</option>
+                        <option value="Gigante">Gigante</option>
                     </select><br>
                     <label for="cbSexo">Sexo: </label>
-                    <select id="cbSexo" class="form-control col-sm-11">
-                        <option>Cualquiera</option>
-                        <option>Femenino</option>
-                        <option>Masculino</option>
+                    <select id="cbSexo" name="cbSexo" class="form-control col-sm-11">
+                        <option value="%">Cualquiera</option>
+                        <option value="Femenino">Femenino</option>
+                        <option value="Masculino">Masculino</option>
                     </select><br>
                     <label for="cbEdad">Edad: </label>
-                    <select id="cbEdad" class="form-control col-sm-11">
-                        <option>Cualquiera</option>
-                        <option>Cachorro</option>
-                        <option>Joven</option>
-                        <option>Adulto</option>
-                        <option>Senior</option>
+                    <select id="cbEdad" name="cbEdad" class="form-control col-sm-11">
+                        <option value="%">Cualquiera</option>
+                        <option value="Cachorro">Cachorro</option>
+                        <option value="Joven">Joven</option>
+                        <option value="Adulto">Adulto</option>
+                        <option value="Senior">Senior</option>
                     </select>
                     <br>
-                  <button id="btnFiltro"> Buscar </button>
+                  
+                  <button id="btnFiltro" type="submit"> Buscar </button>
+                  </form>
                 </div>
               </div>
         </div>
         <!-- Perfiles -->
         <div id="cont-der" class="col-sm-8">
             <div class="card-deck">
-                <div class="card tarjeta-perfil col-sm-4">
-                  <img src="database/ALMENDRA.jpg" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">ALMENDRA</h5>
-                    <p class="estilo-caracteristica">Sexo: </p>
-                    <p class="estilo-res">Femenino</p><br>
-                    <p class="estilo-caracteristica">Edad: </p>
-                    <p class="estilo-res">Adulta</p>
-                  </div>
-                </div>
-                <div class="card tarjeta-perfil col-sm-4">
-                  <img src="database/ATOLE.jpg" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">ATOLE</h5>
-                    <p class="estilo-caracteristica">Sexo: </p>
-                    <p class="estilo-res">Masculino</p><br>
-                    <p class="estilo-caracteristica">Edad: </p>
-                    <p class="estilo-res">Senior</p>
-                  </div>
-                </div>
-                <div class="card tarjeta-perfil col-sm-4">
-                  <img src="database/BANANA.jpg" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">BANANA</h5>
-                    <p class="estilo-caracteristica">Sexo: </p>
-                    <p class="estilo-res">Femenino</p><br>
-                    <p class="estilo-caracteristica">Edad: </p>
-                    <p class="estilo-res">Adulta</p>
-                  </div>
-                </div>
-                <div class="card tarjeta-perfil col-sm-4">
-                    <img src="database/brocheta.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">BROCHETA</h5>
-                      <p class="estilo-caracteristica">Sexo: </p>
-                      <p class="estilo-res">Femenino</p><br>
-                      <p class="estilo-caracteristica">Edad: </p>
-                      <p class="estilo-res">Joven</p>
-                    </div>
-                </div>
-                <div class="card tarjeta-perfil col-sm-4">
-                    <img src="database/CASCARITA.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">CASCARITA DE LIMÓN</h5>
-                      <p class="estilo-caracteristica">Sexo: </p>
-                      <p class="estilo-res">Femenino</p><br>
-                      <p class="estilo-caracteristica">Edad: </p>
-                      <p class="estilo-res">Joven</p>
-                    </div>
-                </div>
-                <div class="card tarjeta-perfil col-sm-4">
-                    <img src="database/Chicoria.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">CHICORIA</h5>
-                      <p class="estilo-caracteristica">Sexo: </p>
-                      <p class="estilo-res">Femenino</p><br>
-                      <p class="estilo-caracteristica">Edad: </p>
-                      <p class="estilo-res">Joven</p>
-                    </div>
-                </div>
-                <div class="card tarjeta-perfil col-sm-4">
-                    <img src="database/CILANTRO.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">CILANTRO</h5>
-                      <p class="estilo-caracteristica">Sexo: </p>
-                      <p class="estilo-res">Masculino</p><br>
-                      <p class="estilo-caracteristica">Edad: </p>
-                      <p class="estilo-res">Senior</p>
-                    </div>
-                  </div>
-                  <div class="card tarjeta-perfil col-sm-4">
-                    <img src="database/Coliflor.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <h5 class="card-title">COLIFLOR</h5>
-                      <p class="estilo-caracteristica">Sexo: </p>
-                      <p class="estilo-res">Femenino</p><br>
-                      <p class="estilo-caracteristica">Edad: </p>
-                      <p class="estilo-res">Adulta</p>
-                    </div>
-                  </div>
+                <?php 
+                  foreach($listaMascotas as $mascota){
+                    ?>
+                      <div id="tarjeta<?=$mascota->Id_Mascota?>" class="card tarjeta-perfil col-sm-4">
+                          <img src="<?=$mascota->Imagen1?>" class="card-img-top" alt="...">
+                          <div class="card-body">
+                            <h5 class="card-title"><?=$mascota->Nombre?></h5>
+                            <p class="estilo-caracteristica">Sexo: </p>
+                            <p class="estilo-res"><?php echo ($mascota->Sexo=='F')?'Femenino':'Masculino'; ?></p><br>
+                            <p class="estilo-caracteristica">Edad: </p>
+                            <p class="estilo-res"><?=$mascota->Edad?></p>
+                            <form id="frmIDM<?=$mascota->Id_Mascota?>" name="frmIDM<?=$mascota->Id_Mascota?>" action="perfilMascota.php" method="POST">
+                              <input type="text" name="idMascotaSel" id="idMascotaSel" style="display:none;" value="<?=$mascota->Id_Mascota?>" >
+                            </form>
+                          </div>
+                      </div>
+                    <?php
+                  }
+                ?>
+                  
+                
               </div>
         </div>
     </div>

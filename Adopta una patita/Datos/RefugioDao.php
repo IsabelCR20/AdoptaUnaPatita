@@ -19,13 +19,10 @@
         public function obtenerTodos(){
             try {
                 $this->conectar();
-                $registro = null;
                 $lista = array();
     
                 $sentenciaSQL = $this->conexion->prepare("SELECT * FROM REFUGIOS;");
-    
                 $sentenciaSQL->execute();
-    
                 foreach($sentenciaSQL->fetchAll(PDO::FETCH_OBJ) as $fila){
                     $registro = new Refugio(
                         $fila->ID_REFUGIO,
@@ -37,7 +34,6 @@
                     );
                     $lista[] = $registro;
                 }
-               
                 return $lista;
             } catch(Exception $e){
                 echo $e->getMessage();

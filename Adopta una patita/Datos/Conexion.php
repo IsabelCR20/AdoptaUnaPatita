@@ -3,8 +3,8 @@ la BD -->
 <?php
 class Conexion
 {
-    private static $db = 'ADOPTAPATITA';
-    private static $servidor = 'localhost';
+    private static $db = 'adoptapatita';
+    private static $servidor = 'localhost:3306';
     private static $usuario = 'root';
     private static $password = 'root';
     private static $conexion  = null;
