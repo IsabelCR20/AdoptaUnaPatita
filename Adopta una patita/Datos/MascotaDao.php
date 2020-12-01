@@ -62,8 +62,7 @@
                                                 TAMANIO like ? and
                                                 SEXO like ? and
                                                 EDAD like ?;");
-                $sentenciaSQL->execute();
-
+                $sentenciaSQL->execute(array($refugio, $tamanio, $sexo, $edad));
                 foreach($sentenciaSQL->fetchAll(PDO::FETCH_OBJ) as $fila){
                     $obj = new Mascota(
                         $fila->ID_MASCOTA,
@@ -77,16 +76,16 @@
                         $fila->ESTERILIZADO,
                         $fila->DESCRIPCION,
                         $fila->HISTORIA,
-                        $fila->IMGAGEN1,
-                        $fila->IMGAGEN2,
-                        $fila->IMGAGEN3,
+                        $fila->IMAGEN1,
+                        $fila->IMAGEN2,
+                        $fila->IMAGEN3,
                         $fila->ID_REFUGIO
                     );
                     $lista[] = $obj;
                 }
                 return $lista;
             } catch (Exception $ex){
-                echo $ex->getMessage();
+                echo 'Error al ver filtro: '.$ex->getMessage();
                 return null;   
             } finally{
                 Conexion::cerrarConexion();
@@ -114,9 +113,9 @@
                     $fila->ESTERILIZADO,
                     $fila->DESCRIPCION,
                     $fila->HISTORIA,
-                    $fila->IMGAGEN1,
-                    $fila->IMGAGEN2,
-                    $fila->IMGAGEN3,
+                    $fila->IMAGEN1,
+                    $fila->IMAGEN2,
+                    $fila->IMAGEN3,
                     $fila->ID_REFUGIO
                 );
                 return $registro;

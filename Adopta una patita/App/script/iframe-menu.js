@@ -4,7 +4,9 @@ var iframeMenu = document.getElementById("frame-menu");
 if(document.addEventListener){
     //alert("soporto");
     window.addEventListener('message', function(event) {
-        var dir = event.data + '.html'; //alert(dir);
+        var dir = event.data;// + '.html'; 
+        //alert(dir);
+        //alert("Esta es la di: " + dir);
         document.location.replace(dir);
     }, false );
 } else {

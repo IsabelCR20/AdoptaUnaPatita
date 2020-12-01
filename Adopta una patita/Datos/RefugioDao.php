@@ -16,6 +16,33 @@
             }
         }
 
+        public function obtenerTodos(){
+            try {
+                $this->conectar();
+                $lista = array();
+    
+                $sentenciaSQL = $this->conexion->prepare("SELECT * FROM REFUGIOS;");
+                $sentenciaSQL->execute();
+                foreach($sentenciaSQL->fetchAll(PDO::FETCH_OBJ) as $fila){
+                    $registro = new Refugio(
+                        $fila->ID_REFUGIO,
+                        $fila->NOMBRE,
+                        $fila->DIRECCION,
+                        $fila->TELEFONO,
+                        $fila->EMAIL,
+                        $fila->SITIO_WEB
+                    );
+                    $lista[] = $registro;
+                }
+                return $lista;
+            } catch(Exception $e){
+                echo $e->getMessage();
+                return null;
+            }finally{
+                Conexion::cerrarConexion();
+            }
+        }
+
         public function obtenerUno($id){
             try {
                 $this->conectar();
