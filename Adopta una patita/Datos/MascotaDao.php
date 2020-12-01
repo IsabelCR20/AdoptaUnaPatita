@@ -52,6 +52,47 @@
             }
         }    
 
+        public function obtenerFiltro($refugio, $tamanio, $sexo, $edad){
+            try{
+                $this->conectar();
+                $lista = array();
+
+                $sentenciaSQL = $this->conexion->prepare("SELECT * FROM MASCOTAS WHERE 
+                                                ID_REFUGIO like ? and
+                                                TAMANIO like ? and
+                                                SEXO like ? and
+                                                EDAD like ?;");
+                $sentenciaSQL->execute();
+
+                foreach($sentenciaSQL->fetchAll(PDO::FETCH_OBJ) as $fila){
+                    $obj = new Mascota(
+                        $fila->ID_MASCOTA,
+                        $fila->NOMBRE,
+                        $fila->RAZA,
+                        $fila->COLOR,
+                        $fila->SEXO,
+                        $fila->EDAD,
+                        $fila->PESO,
+                        $fila->TAMANIO,
+                        $fila->ESTERILIZADO,
+                        $fila->DESCRIPCION,
+                        $fila->HISTORIA,
+                        $fila->IMGAGEN1,
+                        $fila->IMGAGEN2,
+                        $fila->IMGAGEN3,
+                        $fila->ID_REFUGIO
+                    );
+                    $lista[] = $obj;
+                }
+                return $lista;
+            } catch (Exception $ex){
+                echo $ex->getMessage();
+                return null;   
+            } finally{
+                Conexion::cerrarConexion();
+            }
+        }
+
         public function obtenerUno($id){
             try {
                 $this->conectar();
@@ -123,13 +164,13 @@
                 $clave = $this->conexion->lastInsertId();
 
                 $dir_subida = "database/";
-                if($archivos['imagen1']['size'] > 0){
+                if($archivos['imagen']['size'] > 0){
                     $ext = pathinfo($archivos['imagen1']['name'], PATHINFO_EXTENSION);
                     move_uploaded_file($archivos['imagen1']['tmp_name'], $dir_subida.$clave."-1.".$ext);
                     $update1 = "UPDATE MASCOTAS SET IMAGEN1 = ? WHERE ID_MASCOTA = ?";
                     $this->conexion->prepare($update1)->execute(array(
                         $dir_subida.$clave."-1.".$ext,
-                        $clave;
+                        $clave  // ISABEL: quité un ; que estaba aquí
                     ));
                 }
                 if($archivos['imagen2']['size'] > 0){
@@ -138,7 +179,7 @@
                     $update1 = "UPDATE MASCOTAS SET IMAGEN2 = ? WHERE ID_MASCOTA = ?";
                     $this->conexion->prepare($update1)->execute(array(
                         $dir_subida.$clave."-2.".$ext,
-                        $clave;
+                        $clave   // ISABEL: quité un ; que estaba aquí
                     ));
                 }
                 if($archivos['imagen3']['size'] > 0){
@@ -147,7 +188,7 @@
                     $update1 = "UPDATE MASCOTAS SET IMAGEN3 = ? WHERE ID_MASCOTA = ?";
                     $this->conexion->prepare($update1)->execute(array(
                         $dir_subida.$clave."-1.".$ext,
-                        $clave;
+                        $clave      // ISABEL: quité un ; que estaba aquí
                     ));
                 }
                 $this->conexion->commit();

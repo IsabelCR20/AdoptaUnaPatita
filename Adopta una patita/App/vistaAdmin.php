@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="fontawesome/css/all.css"/>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="css/estilos-menu.css">
 </head>
 <body>
     <?php
@@ -14,8 +15,9 @@
         $dao = new MascotaDao();
         session_start();
         if(isset($_SESSION['email'])){
+            
     ?>
-    <nav class="navbar navbar-light bg-light">
+    <nav class="estilos navbar navbar-expand-lg navbar-light bg-light bg-white border-bottom">
         <a class="navbar-brand" href="#">
             <img src="img/logo-grande.JPG" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
         </a>

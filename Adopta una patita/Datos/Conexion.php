@@ -5,8 +5,8 @@ class Conexion
 {
     private static $db = 'ADOPTAPATITA';
     private static $servidor = 'localhost';
-    private static $usuario = 'root';
-    private static $password = 'root';
+    private static $usuario = 'remoto';
+    private static $password = 'remoto1';
     private static $conexion  = null;
 
     public function __construct() {
