@@ -136,7 +136,6 @@
         $(document).ready(function(){
             $("li.active").removeClass("active");
             $("#mnuProductos").addClass("active");
-            
         });
          
         function eliminar(id,nombre){

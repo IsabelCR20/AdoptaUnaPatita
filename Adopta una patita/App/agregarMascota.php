@@ -132,7 +132,7 @@
                 <div class="col-sm-2">Esterilizado:</div>
                 <div class="col-sm-10">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="chkEsterilizado" id="chkEsterilizado" value="1" class="form-control" <?=isset($_POST['chkEsterilizado'])?"checkd":""?>>
+                        <input class="form-check-input" type="checkbox" name="chkEsterilizado" id="chkEsterilizado" value="1" class="form-control" <?=isset($_POST['chkEsterilizado'])?"checked":""?>>
                         <label class="form-check-label" for="chkEsterilizado">
                             Esterilizado
                         </label>
